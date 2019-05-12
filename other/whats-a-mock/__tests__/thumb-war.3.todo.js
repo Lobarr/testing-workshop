@@ -3,17 +3,10 @@ import thumbWar from '../thumb-war'
 import * as utils from '../utils'
 
 test('returns winner', () => {
-  // replace these lines with a call to jest.spyOn and
-  // call to mockImplementation on the mocked function (See hint #1)
-  const originalGetWinner = utils.getWinner
-  utils.getWinner = (p1, p2) => p2
-
+  jest.spyOn(utils, 'getWinner');
+  utils.getWinner.mockImplementation((p1, p2) => p2);
   const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
   expect(winner).toBe('Kent C. Dodds')
-
-  // replace the next two lines with a restoration of the original function
-  // (See hint #2)
-  utils.getWinner = originalGetWinner
 })
 
 /*

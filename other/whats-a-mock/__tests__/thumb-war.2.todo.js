@@ -3,22 +3,11 @@ import thumbWar from '../thumb-war'
 import * as utils from '../utils'
 
 test('returns winner', () => {
-  const originalGetWinner = utils.getWinner
-  // change the getWinner implementation to a function
-  // that keeps track of how often it's called and
-  // the arguments it's called with (Hint #1)
-  utils.getWinner = (p1, p2) => p2
-
-  const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
-  expect(winner).toBe('Kent C. Dodds')
-  // add an assertion for how many times the getWinner function
-  // was supposed to be called (2 times) (Hint #2)
-  //
-  // add another assertion that every time it was called
-  // it was called with the right arguments: 'Ken Wheeler', 'Kent C. Dodds'
-  // (Hint #3)
-
-  utils.getWinner = originalGetWinner
+  utils.getWinner = jest.fn((p1, p2) => p2);
+  const expected = 'Kent C. Dodds';
+  expect(thumbWar('Ken Wheeler', 'Kent C. Dodds')).toBe(expected)
+  expect(utils.getWinner).toHaveBeenCalledTimes(2);
+  expect(utils.getWinner).toBeCalledWith('Ken Wheeler', 'Kent C. Dodds');
 })
 
 /*
