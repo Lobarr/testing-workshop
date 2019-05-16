@@ -29,13 +29,26 @@ const {sum, subtract} = require('./math')
 
 let result, expected
 
-result = sum(3, 7)
-expected = 10
-expect(result).toBe(expected)
 
-result = subtract(7, 3)
-expected = 4
-expect(result).toBe(expected)
+// result = sum(3, 7)
+// expected = 10
+// expect(result).toBe(expected)
+
+// result = subtract(7, 3)
+// expected = 4
+// expect(result).toBe(expected)
+
+test('should add 2 numbers', () => {
+  const actual = sum(1,1);
+  const expected = 2;
+  expect(actual).toBe(expected);
+})
+
+test('should subtract 2 numbers', () => {
+  const actual = sum(1,1);
+  const expected = 0;
+  expect(actual).toBe(expected);
+})
 
 function expect(actual) {
   return {
@@ -44,5 +57,15 @@ function expect(actual) {
         throw new Error(`${actual} is not equal to ${expected}`)
       }
     },
+  }
+}
+
+function test(title, cb) {
+  try {
+    cb();
+    console.log(`✓ ${title}`)
+  } catch (error) {
+    console.error(`✕ ${title}`)
+    console.error(error)
   }
 }

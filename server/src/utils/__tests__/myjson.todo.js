@@ -13,7 +13,21 @@
 // 4. And you're all done!
 /*
 http://ws.kcd.im/?ws=Testing&e=myjson&em=
+
 */
+import {createJSON} from '../myjson'
+
+jest.mock('axios', () => {
+  return {
+    post: jest.fn().mockResolvedValue({data: {}}),
+  }
+})
+
+test('should call api and return response', async () => {
+  const res = await createJSON({})
+  expect(res).toEqual({})
+})
+
 test.skip('I submitted my elaboration and feedback', () => {
   const submitted = false // change this when you've submitted!
   expect(submitted).toBe(true)

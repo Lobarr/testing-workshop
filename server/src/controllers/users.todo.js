@@ -11,6 +11,7 @@ function authorize(req, res, next) {
 
 async function getUsers(req, res) {
   const users = await db.getUsers()
+
   if (users) {
     return res.json({users: users.map(u => userToJSON(u))})
   } else {
@@ -36,6 +37,7 @@ async function getUser(req, res) {
 }
 
 async function updateUser(req, res) {
+  console.log('inside here');
   if (!req.user || req.user.id !== req.params.id) {
     return res.status(403).send()
   }

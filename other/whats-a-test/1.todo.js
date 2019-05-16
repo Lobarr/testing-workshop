@@ -21,3 +21,19 @@ error if the subtract function were to have a bug
 // sum is intentionally broken so you can see errors in the tests
 const sum = (a, b) => a - b
 const subtract = (a, b) => a - b
+
+let actual, expected
+
+actual = sum(1,1);
+expected = 2;
+
+if(actual !== expected) {
+  throw new Error(`Expected ${expected} but received ${actual}`);
+}
+
+actual = subtract(1,1);
+expected = 0;
+
+if (actual !== expected) {
+  throw new Error(`Expected ${expected} but received ${actual}`);
+}
